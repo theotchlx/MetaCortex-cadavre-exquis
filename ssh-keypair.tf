@@ -1,9 +1,6 @@
 # SSH keypair module
 
 module "ssh-keypair" {
-  providers = {
-    openstack.ovh = openstack.ovh
-  }
   source = "./modules/ssh-keypair"
 
   // Pass the input variables to the module

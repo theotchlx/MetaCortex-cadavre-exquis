@@ -32,7 +32,7 @@ variable "ssh_keypair" {
 variable "ssh_keypair_name" {
   description = "Path to the SSH keypair for the instance"
   type        = string
-  default     = "~/.ssh/id_rsa_ovh.pub"
+  default     = "metacortex-keypair"
 }
 
 # Instance modules variables
