@@ -2,6 +2,9 @@
 
 module "register-instance" {
   source = "./modules/register-instance"
+  providers = {
+    openstack = openstack
+  }
 
   // Pass the input variables to the module
   register_instance_name      = var.register_instance_name
@@ -10,6 +13,9 @@ module "register-instance" {
 
 module "provider-instance" {
   source = "./modules/provider-instance"
+  providers = {
+    openstack = openstack
+  }
 
   // Pass the input variables to the module
   provider_instance_name      = var.provider_instance_name
@@ -18,6 +24,9 @@ module "provider-instance" {
 
 module "dispatcher-instance" {
   source = "./modules/dispatcher-instance"
+  providers = {
+    openstack = openstack
+  }
 
   // Pass the input variables to the module
   dispatcher_instance_name      = var.dispatcher_instance_name

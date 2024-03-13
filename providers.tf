@@ -1,4 +1,4 @@
-# Provider Configuration Aliases (for multiple providers setup)
+# Provider Configuration
 
 terraform {
 required_version    = ">= 0.14.0"
