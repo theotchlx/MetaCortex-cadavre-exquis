@@ -1,4 +1,4 @@
-# Provider variables
+# Providers variables
 
 variable tenant_name {
   type = string
@@ -18,6 +18,7 @@ variable ovh_region {
   default = "WAW1"
 }
 
+#--#--#--#--#--#--#--#--#--#--#--#--#--#--#--#--#--#--#
 
 # Modules variables
 
@@ -26,7 +27,7 @@ variable ovh_region {
 variable "ssh_keypair" {
   description = "Path to the SSH keypair for the instance"
   type        = string
-  default     = "~/.ssh/id_rsa_ovh.pub"
+  default     = "~/.ssh/id_rsa_ovh_MetaCortex.pub"
 }
 
 variable "ssh_keypair_name" {
@@ -34,6 +35,7 @@ variable "ssh_keypair_name" {
   type        = string
   default     = "metacortex-keypair"
 }
+
 
 # Instance modules variables
 
