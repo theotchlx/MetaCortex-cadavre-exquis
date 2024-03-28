@@ -8,3 +8,16 @@ terraform {
     }
   }
 }
+
+provider "ovh" {
+  endpoint           = var.ovh_endpoint
+  /*application_key  = var.application_key
+  application_secret = var.application_secret
+  consumer_key       = var.consumer_key*/
+}
+
+provider "openstack" {
+  auth_url    = "https://auth.cloud.ovh.net/v3/"    # auth url
+  domain_name = "default"                           # Domain name; "default" for OVHcloud
+  alias       = "ovh"
+}
