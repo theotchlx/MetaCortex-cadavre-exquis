@@ -66,14 +66,7 @@ You need:
 
 The following steps will allow you to finish setting up your environment, and deploy the project to the Cloud! See [the official documentation](https://help.ovhcloud.com/csm/en-public-cloud-compute-getting-started?id=kb_article_view&sysparm_article=KB0051009) for help.
 
-1. Create a token to access the API endpoint by following this link: https://api.ovh.com/createToken/?GET=/*&POST=/*&PUT=/*&DELETE=/*
-2. Replace the variables `application_key`, `application_secret` and `consumer_key` in `variables.tf` by their respective values.
-3. Generate an ssh key with the command `ssh-keygen -t rsa -f ~/.ssh/id_rsa_ovh_MetaCortex`.
-
-Si vous ne souhaitez pas définir vos secrets dans le fichier de configuration Terraform, vous pouvez également les définir dans des variables d'environnement :
-
-console $ export OVH_ENDPOINT=ovh-eu $ export OVH_APPLICATION_KEY=Your_key_application_OVH(or_AK) $ export OVH_APPLICATION_SECRET=Your_secret_application_key_OVH(or_AS) $ export OVH_CONSUMER_KEY=Your_token(or_CK)
-
+1. Generate an ssh key with the command `ssh-keygen -t rsa -f ~/.ssh/id_rsa_ovh_MetaCortex`.
 2. Run `terraform init` followed by `terraform apply`. Type yes and press enter to confirm the provisioning of the resources.
 
 
