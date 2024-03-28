@@ -3,3 +3,4 @@ terraform*
 CREDENTIALS
 credentials*
 openrc.sh
+terraform.tfvars
