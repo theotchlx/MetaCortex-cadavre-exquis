@@ -57,6 +57,7 @@ The following steps will allow you to define the OpenStack environment variables
     >Best practices advise to follow the principle of least privileges when granting permissions.
 3. Click the vertical dots at the right of the user's row and select `Download OpenStack's RC file`. This is where you choose the region (*This project was assigned the **WAW1 region***).
 4. Execute `source openrc.sh` on your terminal. Enter the user's password. The script will set environment variables for you for this terminal session.
+    > If you lost the user's password, you can generate a new password; see the vertical dots.
 
 
 ## 3. Provisionning OVH resources with Terraform
