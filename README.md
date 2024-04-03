@@ -40,8 +40,11 @@ Throughout this project, our team gained valuable insights and skills, including
 
 These skills not only enhanced our capabilities but also contributed to the overall success and efficiency of our project.
 ### The difficulties we faced : 
-During the project we faced some difficulties. 
-First, the time management, despite being in the same classe we each of us have a lote of work to do and other projects to work on. 
+During the project, we ran into a few bumps along the road.
+
+First off, managing our time was tougher than we thought. Even though we're all in the same class, everyone had their own mountain of work and other projects to juggle.
+
+Plus, diving into the unknown was a bit daunting. None of us really knew how to tackle the project, so we had to dive deep into research and trial and error.
 
 ## IV. Next Step
 To further develop this project, we can enhance our workflow by implementing a robust Continuous Integration/Continuous Deployment (CI/CD) infrastructure. By integrating CI/CD practices, we aim to streamline our development process, improve code quality, and accelerate the delivery of updates to our web application.
