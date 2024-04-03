@@ -4,3 +4,7 @@ CREDENTIALS
 credentials*
 openrc.sh
 terraform.tfvars
+*/*~
+*/*.swp
+*/*.swo
+*/*.swn
