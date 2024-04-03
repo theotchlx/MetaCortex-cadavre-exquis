@@ -1,85 +1,70 @@
-# Technical Documentation
 
-Project contributors: Théo, Isalyne, Giada.
-**2023 - DO3**
+# The "Cadavre Exquis" project, how to deploy a web application. 
+Project contributors: De Martino Giada Flora, Llinares Isalyne, Tchilinguiran Théo.
 
----
+**2023-2024 - DO3**
 
 ## Summary
+I. Project description
 
-This documentation guides you through setting up the environment for using the OpenStack API, as well as environment variables, and using Terraform.
-As described in [the official documentation (link)](https://help.ovhcloud.com/csm/en-public-cloud-compute-terraform?id=kb_article_view&sysparm_article=KB0050797).
+II. Deploying the app
 
-1. Prerequisites, setting up the virtual environment
-2. Loading OpenStack environment variables
-3. Provisionning OVH resources with Terraform
+III. Project progression
 
----
+IV. Next step
 
-## 1. Prerequisites, setting up the virtual environment
+V. Conclusion
 
-You need:
-* Python version >= 3.8,
-* A user account to OVH Horizon ([see official documentation](https://help.ovhcloud.com/csm/en-public-cloud-compute-horizon?id=kb_article_view&sysparm_article=KB0050888))
+## I. Project description
+The project "Cadavre Exquis" is dedicated to streamlining the build and deployment processes of our web application.
 
-The following steps will allow you to set up the OpenStack API as seen in [the official documentation](https://help.ovhcloud.com/csm/en-public-cloud-compute-prepare-openstack-api-environment?id=kb_article_view&sysparm_article=KB0050988).
+To tackle this endeavor, our team, comprised of Isalyne, Théo, and myself, adopted an agile approach, dividing our efforts into three branches. Each team member focused on acquiring and mastering a new skill, with the intention of sharing their knowledge with the rest of the team.
 
+By structuring our project in this manner, we ensured a collaborative learning environment where each member could deepen their expertise while contributing to the collective success of the project. This approach not only facilitated skill development but also our teamwork and trust.
 
-1. Install pip and venv: `sudo apt install python3-pip python3-venv -y`
-2. Create a virtual environment in a `env` directory (creates the directory if it doesn't exist) `python3 -m venv env`
-3. Activate the virtual environment: `source env/bin/activate`
-4. Update the pip tool to the latest version (in the activated environment) : `pip3 install --upgrade pip`
-5. Install the OpenStack client (in the activated environment): `pip3 install python-openstackclient`
-
-Congratulations, you can execute `openstack` commands from the activated environment.
-Run `deactivate` to deactivate the python virtual environment.
-
-Summary of commands:
+## II. Deploying the app
+To deploy the app you only need to clone this project and run this in your command line :
 ```bash
-sudo apt install python4-pip python3-venv -y
-python3 -m venv env
-source env/bin/activate
-pip3 install --upgrade pip
-pip3 install python-openstackclient
+INSERER ICI LA LIGNE DE COMMANDE POUR LANCER TOUT LE PROJECT
 ```
 
+## III. Project progression
+### What we learned :
+Throughout this project, our team gained valuable insights and skills, including:
 
-## 2. Loading OpenStack environment variables
+- Terraform Proficiency: We learned to effectively utilize Terraform for infrastructure provisioning, gaining the ability to define and manage infrastructure as code.
 
-You need:
-* To have completed the previous step
+- Playbook Management with Ansible: Through hands-on experience with Ansible, we mastered the creation and management of playbooks, enabling efficient configuration management across various environments.
 
-The following steps will allow you to define the OpenStack environment variables to authenticate with the OpenStack API; as seen in [the official documentation](https://help.ovhcloud.com/csm/en-public-cloud-compute-set-openstack-environment-variables?id=kb_article_view&sysparm_article=KB0050920).
+- Task Automation for Deployment Efficiency: We explored automation techniques to streamline deployment processes, automating repetitive tasks and ensuring smoother and more reliable deployments.
 
+These skills not only enhanced our capabilities but also contributed to the overall success and efficiency of our project.
+### The difficulties we faced : 
+During the project we faced some difficulties. 
+First, the time management, despite being in the same classe we each of us have a lote of work to do and other projects to work on. 
 
-1. Connect to you OVH account.
-2. Go to Project Management -> Users & Roles and create a user with sufficient permissions. (*This project uses the **MetaCortex user***)
-    >Best practices advise to follow the principle of least privileges when granting permissions.
-3. Click the vertical dots at the right of the user's row and select `Download OpenStack's RC file`. This is where you choose the region (*This project was assigned the **WAW1 region***).
-4. Execute `source openrc.sh` on your terminal. Enter the user's password. The script will set environment variables for you for this terminal session.
-    > If you lost the user's password, you can generate a new password; see the vertical dots.
+## IV. Next Step
+To further develop this project, we can enhance our workflow by implementing a robust Continuous Integration/Continuous Deployment (CI/CD) infrastructure. By integrating CI/CD practices, we aim to streamline our development process, improve code quality, and accelerate the delivery of updates to our web application.
 
+Key components of our proposed CI/CD infrastructure include:
 
-## 3. Provisionning OVH resources with Terraform
+- Version Control Integration: Integration with a version control system such as Git to automate the triggering of CI/CD pipelines upon code commits, ensuring that changes are automatically built, tested, and deployed.
 
-You need:
-* To have completed the previous step
+- Automated Testing Suites: Expansion of our automated testing suites to encompass various levels of testing, including unit tests, integration tests, and end-to-end tests. These tests will run automatically as part of the CI process, providing rapid feedback on code changes.
 
-The following steps will allow you to finish setting up your environment, and deploy the project to the Cloud! See [the official documentation](https://help.ovhcloud.com/csm/en-public-cloud-compute-getting-started?id=kb_article_view&sysparm_article=KB0051009) for help.
+- Pipeline Orchestration: Creation of CI/CD pipelines using tools like Jenkins, GitLab CI/CD, or GitHub Actions to automate the build, test, and deployment processes. These pipelines will define the sequence of steps required to deliver changes from code commit to production deployment.
 
-1. Generate an ssh key with the command `ssh-keygen -t rsa -f ~/.ssh/id_rsa_ovh_MetaCortex`.
-2. Run `terraform init` followed by `terraform apply`. Type yes and press enter to confirm the provisioning of the resources.
+- Artifact Management: Implementation of artifact management solutions to store and manage build artifacts generated during the CI/CD process. This ensures traceability and reproducibility of builds and simplifies the deployment process.
 
+- Deployment Strategies: Adoption of deployment strategies such as blue-green deployment or canary deployment to minimize downtime and mitigate risks associated with deploying new releases. These strategies enable seamless transitions between different versions of the application while ensuring availability and reliability.
 
-## Ressources
-## Rest of report
+- Infrastructure Automation: Integration of infrastructure automation tools such as Terraform or AWS CloudFormation to provision and manage infrastructure resources as code. This ensures consistency and reproducibility of infrastructure configurations across different environments.
 
+- Monitoring and Observability: Incorporation of monitoring and observability tools to monitor the health and performance of the deployed application. Metrics such as response time, error rates, and resource utilization will be monitored in real-time, with alerts triggered for any anomalies.
 
+By implementing a CI/CD infrastructure, we aim to foster a culture of continuous improvement and innovation, enabling rapid and reliable delivery of updates to our web application. This infrastructure will empower our team to iterate quickly, respond to feedback faster, and deliver value to our users with confidence and efficiency.
 
-## X. Modifying variables
+## V. Conclusion
+In conclusion, the "Cadavre Exquis" project has been incredibly instructive for our team. Despite encountering various challenges along the way, we have embraced each obstacle as an opportunity for growth and learning. The collaborative nature of our endeavor, coupled with our commitment to adopting new skills and overcoming hurdles together, has fostered a sense of camaraderie and accomplishment.
 
-1. Modify the variables in variables.tf to fit your requirements.
-
-<br />
-
-#### Well done, Terraform is now connected to the OVH provider.
+Through this project, we have not only automated the build and deployment processes of our web application but also expanded our knowledge and capabilities. Each challenge we faced has only served to strengthen our resolve and push us to reach new heights. As we reflect on our journey, we are proud of what we have achieved and excited about the possibilities that lie ahead.
