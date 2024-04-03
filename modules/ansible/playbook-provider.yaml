@@ -14,11 +14,11 @@
           name: docker
           state: started
 
-     - name: Run dispatcher container
+     - name: Run provider container
        community.docker.docker_container:
-          name: dispatcher
+          name: provider
           state: started
-          image: 'fteychene/cloud-cadavre-exquis-dispatcher:1.0-SNAPSHOT'
+          image: 'fteychene/cloud-cadavre-exquis-provider:1.0-SNAPSHOT'
           ports:
              - '8080:8080'
           env:
