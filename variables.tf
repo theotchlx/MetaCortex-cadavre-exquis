@@ -24,8 +24,8 @@ variable ovh_region {
 
 # SSH keypair variables
 
-variable "ssh_keypair" {
-  description = "Path to the SSH keypair for the instance"
+variable "ssh_private_key" {
+  description = "Path to the SSH private key"
   type        = string
   default     = "~/.ssh/id_rsa_ovh_MetaCortex.pub"
 }
@@ -62,3 +62,4 @@ variable "instance_type" {
   type        = string
   default     = "b2-7"
 }
+
