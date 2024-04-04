@@ -19,6 +19,7 @@ As described in [the official documentation (link)](https://help.ovhcloud.com/cs
 ## Prerequisites, setting up the virtual environment
 
 You need:
+-------------------- ansible-galaxy collection install community.docker ---------------------- ### FOR GIAGIA ### peace
 * Python version >= 3.8,
 * A user account to OVH Horizon ([see official documentation](https://help.ovhcloud.com/csm/en-public-cloud-compute-horizon?id=kb_article_view&sysparm_article=KB0050888))
 
