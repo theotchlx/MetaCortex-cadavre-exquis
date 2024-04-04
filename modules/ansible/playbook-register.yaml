@@ -39,14 +39,21 @@
           name: postgresql
           state: started
 
-     - name: Create database
-       community.postgresql.postgresql_db:
-          name: cadavre
+     - name: Install psycopg2
+       ansible.builtin.apt:
+          name: python3-psycopg2
           state: present
 
      - name: Create user
        community.postgresql.postgresql_user:
-          name: cadavre
-          password: cadavre
-          priv: '*.*:ALL'
+          name: test
+          password: password
+          db: register
+
+     - name: Create database
+       community.postgresql.postgresql_db:
+          name: register
           state: present
+          #login_host: localhost
+          login_user: test
+          login_password: password
