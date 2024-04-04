@@ -1,0 +1,25 @@
+---
+- name: Docker installation
+  hosts: all
+  become: true
+  tasks:
+     - name: Install docker
+       ansible.builtin.apt:
+          update_cache: true
+          package:
+             - docker.io
+
+     - name: Start docker
+       ansible.builtin.service:
+          name: docker
+          state: started
+
+     - name: Run dispatcher container
+       community.docker.docker_container:
+          name: dispatcher
+          state: started
+          image: 'fteychene/cloud-cadavre-exquis-dispatcher:1.0-SNAPSHOT'
+          ports:
+             - '8080:8080'
+          env:
+             REGISTER_URLS: 'http://172.17.0.1:8081'
