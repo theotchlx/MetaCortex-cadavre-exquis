@@ -36,7 +36,20 @@ module "ssh-keypair" {
   source = "./modules/ssh-keypair"
 
   // Pass the input variables to the module
-  ssh_keypair       = var.ssh_keypair
+  ssh_keypair       = "${var.ssh_private_key}.pub"
   ssh_keypair_name  = var.ssh_keypair_name
   ovh_endpoint      = var.ovh_endpoint
+}
+
+// faire executer les playbooks a mon terraform
+resource "null_resource" "ansible_provisioner" {
+  provisioner "local-exec" {
+    command = "ansible-playbook -i '${module.dispatcher-instance.instance_ip},' -u debian --private-key=${var.ssh_private_key} ./modules/ansible/playbook-dispatcher.yaml"
+  }
+  provisioner "local-exec" {
+    command = "ansible-playbook -i '${module.provider-instance.instance_ip},' -u debian --private-key=${var.ssh_private_key} ./modules/ansible/playbook-provider.yaml"
+  }
+  provisioner "local-exec" {
+    command = "ansible-playbook -i '${module.register-instance.instance_ip},' -u debian --private-key=${var.ssh_private_key} ./modules/ansible/playbook-register.yaml"
+  }
 }
