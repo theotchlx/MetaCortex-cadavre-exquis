@@ -19,6 +19,7 @@ As described in [the official documentation (link)](https://help.ovhcloud.com/cs
 ## Prerequisites, setting up the virtual environment
 
 You need:
+----- TERRAFORM + ANSIBLE -----
 -------------------- ansible-galaxy collection install community.docker ---------------------- ### FOR GIAGIA ### peace
 ------------------- ansible-galaxy collection install community.postgresql ----------------
 --- ansible-playbook -i "54.37.130.217," -u debian --private-key=~/.ssh/id_rsa_ovh_MetaCortex ^Cdules/ansible/playbook-register.yaml
@@ -29,6 +30,7 @@ You need:
 The following steps will allow you to set up the OpenStack API as seen in [the official documentation](https://help.ovhcloud.com/csm/en-public-cloud-compute-prepare-openstack-api-environment?id=kb_article_view&sysparm_article=KB0050988).
 
 
+OPTIONAL : HOW TO INSTALL THE OPENSTACK CLI (which, after auth with OVH, allows u to manually contorl resources)
 1. Install pip and venv: `sudo apt install python3-pip python3-venv -y`
 2. Create a virtual environment in a `env` directory (creates the directory if it doesn't exist) `python3 -m venv env`
 3. Activate the virtual environment: `source env/bin/activate`
@@ -51,7 +53,7 @@ pip3 install python-openstackclient
 ## 1. Loading OpenStack environment variables
 
 You need:
-* To have completed the previous step
+* To have completed the previous step NOOOOOOOTTTTTTTTTTTT
 
 The following steps will allow you to define the OpenStack environment variables to authenticate with the OpenStack API; as seen in [the official documentation](https://help.ovhcloud.com/csm/en-public-cloud-compute-set-openstack-environment-variables?id=kb_article_view&sysparm_article=KB0050920).
 

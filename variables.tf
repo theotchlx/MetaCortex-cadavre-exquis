@@ -31,7 +31,7 @@ variable "ssh_keypair" {
 }
 
 variable "ssh_keypair_name" {
-  description = "Path to the SSH keypair for the instance"
+  description = "Name of the SSH keypair resource"
   type        = string
   default     = "metacortex-keypair"
 }
