@@ -21,6 +21,8 @@ As described in [the official documentation (link)](https://help.ovhcloud.com/cs
 You need:
 -------------------- ansible-galaxy collection install community.docker ---------------------- ### FOR GIAGIA ### peace
 ------------------- ansible-galaxy collection install community.postgresql ----------------
+--- ansible-playbook -i "54.37.130.217," -u debian --private-key=~/.ssh/id_rsa_ovh_MetaCortex ^Cdules/ansible/playbook-register.yaml
+ ---
 * Python version >= 3.8,
 * A user account to OVH Horizon ([see official documentation](https://help.ovhcloud.com/csm/en-public-cloud-compute-horizon?id=kb_article_view&sysparm_article=KB0050888))
 
