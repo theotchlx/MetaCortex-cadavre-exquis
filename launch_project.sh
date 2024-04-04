@@ -4,7 +4,7 @@
 # In particular to set up authentication with the OVH provider.
 
 
-# Clone the repository
+# Clone the repository in the current working directory
 git clone https://github.com/fteychene/cloud-cadavre-exquis.git
 
 # Initialize Terraform
