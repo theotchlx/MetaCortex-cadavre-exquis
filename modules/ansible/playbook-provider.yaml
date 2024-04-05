@@ -3,23 +3,73 @@
   hosts: all
   become: true
   tasks:
-     - name: Install docker
-       ansible.builtin.apt:
-          update_cache: true
-          package:
-             - docker.io
+    - name: Install Docker
+      ansible.builtin.apt:
+        update_cache: yes
+        name: docker.io
+        state: present
 
-     - name: Start docker
-       ansible.builtin.service:
-          name: docker
-          state: started
+    - name: Start Docker service
+      ansible.builtin.service:
+        name: docker
+        state: started
 
-     - name: Run provider container
-       community.docker.docker_container:
-          name: provider
-          state: started
-          image: 'fteychene/cloud-cadavre-exquis-provider:1.0-SNAPSHOT'
-          ports:
-             - '8080:8080'
-          env:
-             REGISTER_URLS: 'http://172.17.0.1:8081'
+    - name: Run provider container
+      community.docker.docker_container:
+        name: provider
+        state: started
+        image: 'fteychene/cloud-cadavre-exquis-provider:1.0-SNAPSHOT'
+        ports:
+          - '8080:8080'
+        env:
+          REGISTER_URLS: 'http://172.17.0.1:8081'
+
+- name: Run provider containers for different word types
+  hosts: localhost
+  tasks:
+    - name: Run provider container for subject
+      community.docker.docker_container:
+        name: providers-subject
+        image: fteychene/cloud-cadavre-exquis-provider:1.0-SNAPSHOT
+        depends_on:
+          - registers
+        environment:
+          REGISTER_URLS: "http://registers:8080"
+          WORD_TYPE: SUBJECT
+        networks:
+          - name: provider
+
+    - name: Run provider container for verb
+      community.docker.docker_container:
+        name: providers-verb
+        image: fteychene/cloud-cadavre-exquis-provider:1.0-SNAPSHOT
+        depends_on:
+          - registers
+        environment:
+          REGISTER_URLS: "http://registers:8080"
+          WORD_TYPE: VERB
+        networks:
+          - name: provider
+
+    - name: Run provider container for adjective
+      community.docker.docker_container:
+        name: providers-adj
+        image: fteychene/cloud-cadavre-exquis-provider:1.0-SNAPSHOT
+        depends_on:
+          - registers
+        environment:
+          REGISTER_URLS: "http://registers:8080"
+          WORD_TYPE: ADJECTIVE
+        networks:
+          - name: provider
+
+    - name: Run PostgreSQL container
+      community.docker.docker_container:
+        name: postgres
+        image: postgres:13
+        environment:
+          POSTGRES_USER: "test"
+          POSTGRES_PASSWORD: "password"
+          POSTGRES_DB: "register"
+        networks:
+          - name: provider

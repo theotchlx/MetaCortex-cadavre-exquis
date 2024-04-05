@@ -3,23 +3,31 @@
   hosts: all
   become: true
   tasks:
-     - name: Install docker
-       ansible.builtin.apt:
-          update_cache: true
-          package:
-             - docker.io
+    - name: Install Docker
+      ansible.builtin.apt:
+        update_cache: yes
+        name: docker.io
+        state: present
 
-     - name: Start docker
-       ansible.builtin.service:
-          name: docker
-          state: started
+    - name: Start Docker service
+      ansible.builtin.service:
+        name: docker
+        state: started
 
-     - name: Run register container
-       community.docker.docker_container:
-          name: register
-          state: started
-          image: 'fteychene/cloud-cadavre-exquis-register:1.0-SNAPSHOT'
-          ports:
-             - '8080:8080'
-          env:
-             REGISTER_URLS: 'http://172.17.0.1:8081'
+    - name: Run register container
+      community.docker.docker_container:
+        name: register
+        state: started
+        image: 'fteychene/cloud-cadavre-exquis-register:1.0-SNAPSHOT'
+        ports:
+          - '8080:8080'
+        env:
+          REGISTER_URLS: 'http://172.17.0.1:8081'
+
+- name: Define registers container
+  hosts: localhost
+  tasks:
+    - name: Run registers container
+      community.docker.docker_container:
+        name: registers
+        image:
