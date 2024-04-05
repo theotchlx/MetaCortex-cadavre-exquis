@@ -1,4 +1,5 @@
 # This xxx.tfvars defines values for the variables.
+# This file is a placeholder, don't hesitate to modify it to suit your needs.
 
 # Provider variables
 
