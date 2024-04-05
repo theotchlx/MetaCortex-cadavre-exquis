@@ -57,7 +57,7 @@
         image: fteychene/cloud-cadavre-exquis-provider:1.0-SNAPSHOT
         depends_on:
           - registers
-        environment:
+        env:
           REGISTER_URLS: "{{provider_instance_ip}}"  # "http://registers:8080"
           WORD_TYPE: ADJECTIVE
         networks:
@@ -67,7 +67,7 @@
       community.docker.docker_container:
         name: postgres
         image: postgres:13
-        environment:
+        env:
           POSTGRES_USER: "test"
           POSTGRES_PASSWORD: "password"
           POSTGRES_DB: "register"
