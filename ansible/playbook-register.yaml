@@ -34,7 +34,7 @@
           ports:
              - '8080:8080'
           env:
-             POSTGRESQL_ADDON_HOST: "{{register_instance_ip}}"
+             POSTGRESQL_ADDON_HOST: "{{register_instance_ip}}"  # localhost config did not work so we use public IP to access database...
              POSTGRESQL_ADDON_PORT: "5432"
              POSTGRESQL_ADDON_DB: "register"
              POSTGRESQL_ADDON_USER: "test"
