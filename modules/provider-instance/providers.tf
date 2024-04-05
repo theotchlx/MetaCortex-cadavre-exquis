@@ -4,17 +4,14 @@ terraform {
       source  = "terraform-provider-openstack/openstack"
     }
     ovh = {
-      source = "ovh/ovh"
+      source  = "ovh/ovh"
     }
   }
 }
 
 provider "ovh" {
-  endpoint           = var.ovh_endpoint
-  /*application_key  = var.application_key
-  application_secret = var.application_secret
-  consumer_key       = var.consumer_key*/
-  alias              = "ovh"
+  endpoint    = var.ovh_endpoint
+  alias       = "ovh"
 }
 
 provider "openstack" {

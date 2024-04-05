@@ -1,31 +1,39 @@
+# Cadavre Exquis project Technical Documentation
 
-# The "Cadavre Exquis" project, how to deploy a web application. 
 Project contributors: De Martino Giada Flora, Llinares Isalyne, Tchilinguiran Théo.
-
 **2023-2024 - DO3**
 
+---
+
 ## Summary
-I. Project description
+I. Deploying the app
 
-II. Deploying the app
+II. How it works
 
-III. Project progression
+III. Why we made these technical choices
 
-IV. Next step
+IV. How we designed and developped the project
 
-V. Conclusion
+V. Next step
 
-## I. Project description
-The project "Cadavre Exquis" is dedicated to streamlining the build and deployment processes of our web application.
+---
+
+The goal of the project is to deploy a web app. To do so, we chose to use Terraform and Ansible.
 
 To tackle this endeavor, our team, comprised of Isalyne, Théo, and myself, adopted an agile approach, dividing our efforts into three branches. Each team member focused on acquiring and mastering a new skill, with the intention of sharing their knowledge with the rest of the team.
 
 By structuring our project in this manner, we ensured a collaborative learning environment where each member could deepen their expertise while contributing to the collective success of the project. This approach not only facilitated skill development but also our teamwork and trust.
+/
+Here's a rough summary of how it works:
+You need to have Terraform and Ansible installed ;
+You then clone the repo, enter its directory, follow the documentation to authenticate to OVH, and execute the `launch_project.sh` script.
+This script provisions the infrastructure (three virtual machines hosted by OVH) and remotely configures the instances (installs Docker, pulls images, makes containers, etc).
+This is how the application is deployed.
 
-## II. Deploying the app
+## I. Deploying the app
 To deploy the app you only need to clone this project and run this in your command line :
 ```bash
-INSERER ICI LA LIGNE DE COMMANDE POUR LANCER TOUT LE PROJECT
+./launch_project.sh
 ```
 
 ## III. Project progression

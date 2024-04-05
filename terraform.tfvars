@@ -12,7 +12,7 @@ ovh_region = "WAW1"
 
 # SSH keypair module variables
 
-ssh_keypair = "~/.ssh/id_rsa_ovh_MetaCortex.pub"
+ssh_private_key = "~/.ssh/id_rsa_ovh_MetaCortex"
 
 ssh_keypair_name = "metacortex-keypair"
 
