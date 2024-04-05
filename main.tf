@@ -47,7 +47,7 @@ resource "null_resource" "ansible_provisioner" {
     command = "ansible-playbook -i '${module.dispatcher-instance.instance_ip},' -u debian --private-key=${var.ssh_private_key} ./modules/ansible/playbook-dispatcher.yaml"
   }
   provisioner "local-exec" {
-    command = "ansible-playbook -i '${module.provider-instance.instance_ip},' -u debian --private-key=${var.ssh_private_key} --extra-vars 'dispatcher_instance_ip=${module.dispatcher-instance.instance_ip}' ./modules/ansible/playbook-provider.yaml"
+    command = "ansible-playbook -i '${module.provider-instance.instance_ip},' -u debian --private-key=${var.ssh_private_key} --extra-vars 'provider_instance_ip=${module.provider-instance.instance_ip}' ./modules/ansible/playbook-provider.yaml"
   }
   provisioner "local-exec" {
     command = "ansible-playbook -i '${module.register-instance.instance_ip},' -u debian --private-key=${var.ssh_private_key} ./modules/ansible/playbook-register.yaml"

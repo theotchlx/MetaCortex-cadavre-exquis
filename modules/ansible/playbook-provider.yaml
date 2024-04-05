@@ -34,7 +34,7 @@
         depends_on:
           - registers
         environment:
-          REGISTER_URLS: "{{dispatcher_instance_ip}}"  # "http://registers:8080"
+          REGISTER_URLS: "{{provider_instance_ip}}"  # "http://registers:8080"
           WORD_TYPE: SUBJECT
         networks:
           - name: provider
@@ -46,7 +46,7 @@
         depends_on:
           - registers
         environment:
-          REGISTER_URLS: "{{dispatcher_instance_ip}}"  # "http://registers:8080"
+          REGISTER_URLS: "{{provider_instance_ip}}"  # "http://registers:8080"
           WORD_TYPE: VERB
         networks:
           - name: provider
@@ -58,7 +58,7 @@
         depends_on:
           - registers
         environment:
-          REGISTER_URLS: "{{dispatcher_instance_ip}}"  # "http://registers:8080"
+          REGISTER_URLS: "{{provider_instance_ip}}"  # "http://registers:8080"
           WORD_TYPE: ADJECTIVE
         networks:
           - name: provider
