@@ -1,21 +1,21 @@
 # Providers variables
 
-variable tenant_name {
-  type = string
+variable "tenant_name" {
+  type        = string
   description = "Name of the tenant"
-  default = "MetaCortex"
+  default     = "MetaCortex"
 }
 
-variable ovh_endpoint {
-  type = string
+variable "ovh_endpoint" {
+  type        = string
   description = "OVH endpoint"
-  default = "ovh-eu"
+  default     = "ovh-eu"
 }
 
-variable ovh_region {
-  type = string
+variable "ovh_region" {
+  type        = string
   description = "OVH region"
-  default = "WAW1"
+  default     = "WAW1"
 }
 
 #--#--#--#--#--#--#--#--#--#--#--#--#--#--#--#--#--#--#
@@ -27,7 +27,7 @@ variable ovh_region {
 variable "ssh_private_key" {
   description = "Path to the SSH private key"
   type        = string
-  default     = "~/.ssh/id_rsa_ovh_MetaCortex"
+  default     = "~/.ssh/id_rsa"
 }
 
 variable "ssh_keypair_name" {
