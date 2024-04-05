@@ -14,15 +14,12 @@
         name: docker
         state: started
 
-- name: Deploy Docker containers
-  hosts: localhost
-  tasks:
     - name: Déploiement du service dispatcher
       docker_container:
         name: dispatcher
         image: fteychene/cloud-cadavre-exquis-dispatcher:1.0-SNAPSHOT
         env:
-          REGISTER_URLS: "http://registers:8080"
+          REGISTER_URLS: "{{provider_instance_ip}}"  # "http://registers:8080"
 
     - name: Déploiement du service lb
       docker_container:

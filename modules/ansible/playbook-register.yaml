@@ -24,23 +24,10 @@
         env:
           REGISTER_URLS: 'http://172.17.0.1:8081'
 
-- name: Define registers container
-  hosts: localhost
-  tasks:
-    - name: Run registers container
-      community.docker.docker_container:
-        name: registers
-        image:
-
-- name: Configuration du conteneur registers
-  hosts: localhost
-  tasks:
     - name: Exécution du conteneur registers
       community.docker.docker_container:
         name: registers
         image: fteychene/cloud-cadavre-exquis-register:1.0-SNAPSHOT
-        depends_on:
-          - postgres
         env:
           POSTGRESQL_ADDON_HOST: "postgres"
           POSTGRESQL_ADDON_PORT: "5432"

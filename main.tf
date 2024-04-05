@@ -44,7 +44,7 @@ module "ssh-keypair" {
 // faire executer les playbooks a mon terraform
 resource "null_resource" "ansible_provisioner" {
   provisioner "local-exec" {
-    command = "ansible-playbook -i '${module.dispatcher-instance.instance_ip},' -u debian --private-key=${var.ssh_private_key} ./modules/ansible/playbook-dispatcher.yaml"
+    command = "ansible-playbook -i '${module.dispatcher-instance.instance_ip},' -u debian --private-key=${var.ssh_private_key} --extra-vars 'provider_instance_ip=${module.provider-instance.instance_ip}' ./modules/ansible/playbook-dispatcher.yaml"
   }
   provisioner "local-exec" {
     command = "ansible-playbook -i '${module.provider-instance.instance_ip},' -u debian --private-key=${var.ssh_private_key} --extra-vars 'provider_instance_ip=${module.provider-instance.instance_ip}' ./modules/ansible/playbook-provider.yaml"

@@ -24,44 +24,28 @@
         env:
           REGISTER_URLS: 'http://172.17.0.1:8081'
 
-- name: Run provider containers for different word types
-  hosts: localhost
-  tasks:
     - name: Run provider container for subject
       community.docker.docker_container:
         name: providers-subject
         image: fteychene/cloud-cadavre-exquis-provider:1.0-SNAPSHOT
-        depends_on:
-          - registers
         environment:
           REGISTER_URLS: "{{provider_instance_ip}}"  # "http://registers:8080"
           WORD_TYPE: SUBJECT
-        networks:
-          - name: provider
-
     - name: Run provider container for verb
       community.docker.docker_container:
         name: providers-verb
         image: fteychene/cloud-cadavre-exquis-provider:1.0-SNAPSHOT
-        depends_on:
-          - registers
         environment:
           REGISTER_URLS: "{{provider_instance_ip}}"  # "http://registers:8080"
           WORD_TYPE: VERB
-        networks:
-          - name: provider
 
     - name: Run provider container for adjective
       community.docker.docker_container:
         name: providers-adj
         image: fteychene/cloud-cadavre-exquis-provider:1.0-SNAPSHOT
-        depends_on:
-          - registers
         env:
           REGISTER_URLS: "{{provider_instance_ip}}"  # "http://registers:8080"
           WORD_TYPE: ADJECTIVE
-        networks:
-          - name: provider
 
     - name: Run PostgreSQL container
       community.docker.docker_container:
@@ -71,5 +55,3 @@
           POSTGRES_USER: "test"
           POSTGRES_PASSWORD: "password"
           POSTGRES_DB: "register"
-        networks:
-          - name: provider
