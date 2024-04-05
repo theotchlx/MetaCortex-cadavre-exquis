@@ -53,3 +53,12 @@ resource "null_resource" "ansible_provisioner" {
     command = "ansible-playbook -i '${module.register-instance.instance_ip},' -u debian --private-key=${var.ssh_private_key} ./ansible/playbook-register.yaml"
   }
 }
+
+# I know it's really not Terraform's job but....
+// Create the Nginx config file (fill template with Dispatcher IP)
+resource "local_file" "nginx_config" {
+  content  = templatefile("${path.root}/ansible/nginx-template.conf", {
+    dispatcher_ip = module.dispatcher-instance.instance_ip
+  })
+  filename = "${path.root}/ansible/nginx.conf"
+}
