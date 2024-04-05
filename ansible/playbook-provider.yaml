@@ -14,12 +14,29 @@
           name: docker
           state: started
 
-     - name: Run provider container
+     - name: Run provider subject container
        community.docker.docker_container:
-          name: provider
+          name: provider-subject
           state: started
           image: 'fteychene/cloud-cadavre-exquis-provider:1.0-SNAPSHOT'
-          ports:
-             - '8080:8080'
           env:
-             REGISTER_URLS: 'http://172.17.0.1:8081'
+             REGISTER_URLS: 'http://{{register_instance_ip}}:8080'
+             WORD_TYPE: SUBJECT
+     
+     - name: Run provider verb container
+       community.docker.docker_container:
+          name: provider-verb
+          state: started
+          image: 'fteychene/cloud-cadavre-exquis-provider:1.0-SNAPSHOT'
+          env:
+             REGISTER_URLS: 'http://{{register_instance_ip}}:8080'
+             WORD_TYPE: VERB
+     
+     - name: Run provider adjective container
+       community.docker.docker_container:
+          name: provider-adjective
+          state: started
+          image: 'fteychene/cloud-cadavre-exquis-provider:1.0-SNAPSHOT'
+          env:
+             REGISTER_URLS: 'http://{{register_instance_ip}}:8080'
+             WORD_TYPE: ADJECTIVE
