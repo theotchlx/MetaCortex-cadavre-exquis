@@ -12,14 +12,14 @@ ovh_region = "WAW1"
 
 # SSH keypair module variables
 
-ssh_private_key = "~/.ssh/id_rsa"
+ssh_private_key = "~/.ssh/id_rsa_ovh_MetaCortex"
 
-ssh_keypair_name = "metacortex-keypair"
+ssh_keypair_name = "metacortex-keypair1"
 
 
 # Instance modules variables
 
-register_instance_name = "metacortex-register-vm"
-provider_instance_name = "metacortex-provider-vm"
-dispatcher_instance_name = "metacortex-dispatcher-vm"
+register_instance_name = "metacortex-register-vm1"
+provider_instance_name = "metacortex-provider-vm1"
+dispatcher_instance_name = "metacortex-dispatcher-vm1"
 
