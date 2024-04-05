@@ -5,36 +5,42 @@
   tasks:
      - name: Install docker
        ansible.builtin.apt:
-          update_cache: true
-          package:
-             - docker.io
+         update_cache: true
+         package:
+           - docker.io
 
      - name: Start docker
        ansible.builtin.service:
-          name: docker
-          state: started
+         name: docker
+         state: started
 
-    - name: Copy Nginx configuration file to remote host
-      copy:
-        src: ../ansible/nginx-template.conf
-        dest: /etc/nginx/conf.d/default.conf
+     - name: Create Nginx conf directory
+       ansible.builtin.file:
+         path: /etc/nginx/conf.d
+         state: directory
+         mode: '0755'
 
-    - name: Create Nginx container
-      docker_container:
-        name: load-balancer
-        image: nginx:1.19
-        state: started
-        restart_policy: always
-        published_ports: "80:80"
-        volumes:
-          - /etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
-
+     - name: Copy Nginx configuration file to remote host
+       copy:
+         src: ../ansible/nginx-template.conf
+         dest: /etc/nginx/conf.d/default.conf
+ 
+     - name: Create Nginx container
+       docker_container:
+         name: load-balancer
+         image: nginx:1.19
+         state: started
+         restart_policy: always
+         published_ports: "80:80"
+         volumes:
+           - /etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+ 
      - name: Run dispatcher container
        community.docker.docker_container:
-          name: dispatcher
-          state: started
-          image: 'fteychene/cloud-cadavre-exquis-dispatcher:1.0-SNAPSHOT'
-          ports:
-             - '8080:8080'
-          env:
-             REGISTER_URLS: 'http://{{register_instance_ip}}8080'
+         name: dispatcher
+         state: started
+         image: 'fteychene/cloud-cadavre-exquis-dispatcher:1.0-SNAPSHOT'
+         ports:
+           - '8080:8080'
+         env:
+           REGISTER_URLS: 'http://{{register_instance_ip}}:8080'

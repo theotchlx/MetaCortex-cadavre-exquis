@@ -27,7 +27,7 @@ variable "ovh_region" {
 variable "ssh_private_key" {
   description = "Path to the SSH private key"
   type        = string
-  default     = "~/.ssh/id_rsa"
+  default     = "~/.ssh/id_rsa_ovh_MetaCortex"
 }
 
 variable "ssh_keypair_name" {

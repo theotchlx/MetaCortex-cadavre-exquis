@@ -50,7 +50,7 @@ resource "null_resource" "ansible_provisioner" {
     command = "ansible-playbook -i '${module.provider-instance.instance_ip},' -u debian --private-key=${var.ssh_private_key} --extra-vars 'register_instance_ip=${module.register-instance.instance_ip}' ./ansible/playbook-provider.yaml"
   }
   provisioner "local-exec" {
-    command = "ansible-playbook -i '${module.register-instance.instance_ip},' -u debian --private-key=${var.ssh_private_key} ./ansible/playbook-register.yaml"
+    command = "ansible-playbook -i '${module.register-instance.instance_ip},' -u debian --private-key=${var.ssh_private_key} --extra-vars 'register_instance_ip=${module.register-instance.instance_ip}' ./ansible/playbook-register.yaml"
   }
 }
 

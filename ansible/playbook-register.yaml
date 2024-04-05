@@ -13,6 +13,7 @@
        ansible.builtin.service:
           name: docker
           state: started
+
      - name: Run register container
        community.docker.docker_container:
           name: db
@@ -33,7 +34,7 @@
           ports:
              - '8080:8080'
           env:
-             POSTGRESQL_ADDON_HOST: "postgres"
+             POSTGRESQL_ADDON_HOST: "{{register_instance_ip}}"
              POSTGRESQL_ADDON_PORT: "5432"
              POSTGRESQL_ADDON_DB: "register"
              POSTGRESQL_ADDON_USER: "test"

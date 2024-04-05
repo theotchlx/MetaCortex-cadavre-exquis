@@ -14,14 +14,14 @@ III. Why we made these technical choices
 
 IV. How we designed and developped the project
 
+V. Security concerns
+
 V. Next step
 
 ---
 
 The goal of the project is to deploy a web app. To do so, we chose to use Terraform and Ansible.
-
-To tackle this endeavor, our team, comprised of Isalyne, Théo, and myself, adopted an agile approach, dividing our efforts into three branches. Each team member focused on acquiring and mastering a new skill, with the intention of sharing their knowledge with the rest of the team.
-
+Security concerns : public IPs, unsafe deployment, no reliability (no orchestration), OVH so possible downtime / data loss (but cheap), sensitive information may appear in terraform deployment info dump. PBs faced during development (excluding utterly disastrous project and team management) : terraform state sharing difficulties, and ansible having to be manually remade because terraform doesnot take ansible info in its state
 By structuring our project in this manner, we ensured a collaborative learning environment where each member could deepen their expertise while contributing to the collective success of the project. This approach not only facilitated skill development but also our teamwork and trust.
 /
 Here's a rough summary of how it works:
